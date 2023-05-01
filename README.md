@@ -45,6 +45,10 @@ was larger):
 
 ```
 
+## GUI
+The GUI is packaged within the same repo under ``/gui``.
+Read the ``README.md`` for instructions to get it running locally. It is built with Angular 15 and node 18+
+
 ## Testing
 
 Testing is done with quarkus-junit and [QuarkusTest](https://quarkus.io/guides/getting-started-testing).
