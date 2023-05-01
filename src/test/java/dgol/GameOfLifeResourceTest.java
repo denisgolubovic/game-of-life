@@ -1,7 +1,7 @@
-package dgol.priv;
+package dgol;
 
-import dgol.priv.model.Grid;
-import dgol.priv.service.GameOfLifeService;
+import dgol.model.Grid;
+import dgol.service.GameOfLifeService;
 import io.quarkus.test.junit.QuarkusMock;
 import io.quarkus.test.junit.QuarkusTest;
 import io.restassured.http.ContentType;
@@ -28,6 +28,8 @@ public class GameOfLifeResourceTest {
 
     @Test
     public void when_initializeEndpointIsCalled_should_return_http200() {
+        Grid mockGrid = createMockGrid();
+        when(serviceMock.initGame(10,10, 0.35)).thenReturn(mockGrid);
         given()
                 .contentType(ContentType.JSON)
                 .body("{\"columns\": \"10\", \"rows\": \"10\", \"aliveProbability\": \"0.35\"}")

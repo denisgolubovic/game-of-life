@@ -1,7 +1,7 @@
-package dgol.priv.resource;
+package dgol.resource;
 
-import dgol.priv.model.GameBoard;
-import dgol.priv.service.GameOfLifeService;
+import dgol.model.GameBoard;
+import dgol.service.GameOfLifeService;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.POST;

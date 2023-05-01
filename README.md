@@ -57,6 +57,7 @@ and the endpoints are being called.
 
 ## TODOS
 - Add columns, rows and probability as input parameters from GUI to let the user set the game board.
+- Remove button in GUI for the next generation and auto update in a given time interval (0,5 seconds for instance)
 - Add a bit more "fun" styling and welcoming in the GUI :-)
 - More specific error handling
 - Secure endpoints with OpenID Connect and OAuth 2.0

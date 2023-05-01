@@ -1,6 +1,6 @@
-package dgol.priv.service;
+package dgol.service;
 
-import dgol.priv.model.Grid;
+import dgol.model.Grid;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import org.slf4j.Logger;
@@ -37,8 +37,8 @@ public class GameOfLifeService {
         grid = new Grid(columns, rows);
         IntStream.range(0, columns).forEach(column ->
                 IntStream.range(0, rows).forEach(row -> {
-                    boolean isAlive = random.nextDouble() < aliveProbability;
-                    grid.setCell(column, row, isAlive);
+                    boolean cellAlive = random.nextDouble() < aliveProbability;
+                    grid.setCell(column, row, cellAlive);
                 })
         );
         logger.info("Created a new board with columns: {}, rows: {}, and aliveProbability: {}", columns, rows, aliveProbability);
@@ -77,7 +77,7 @@ public class GameOfLifeService {
 
     private boolean shouldBeAlive(final int row, final int column) {
         long aliveNeighbours = countAliveNeighbours(row, column);
-        return (grid.getCell(column, row).isAlive() && (aliveNeighbours == 2 || aliveNeighbours == 3)) || (!grid.getCell(column, row).isAlive() && aliveNeighbours == 3);
+        return (aliveNeighbours == 3) || (grid.getCell(column, row).isAlive() && (aliveNeighbours == 2));
     }
 
     /**
@@ -88,9 +88,9 @@ public class GameOfLifeService {
      * @return a long representing the amount of living neighbours.
      */
     private long countAliveNeighbours(final int row, final int column) {
-        return IntStream.rangeClosed(-1, 1).flatMap(neighbourColumn ->
-                IntStream.rangeClosed(-1, 1).filter(neighbourRow ->
-                        !(neighbourRow == 0 && neighbourColumn == 0) && isAlive(row + neighbourRow, column + neighbourColumn)
+        return IntStream.rangeClosed(-1, 1).flatMap(columnOffset ->
+                IntStream.rangeClosed(-1, 1).filter(rowOffset ->
+                        !(rowOffset == 0 && columnOffset == 0) && isAlive(row + rowOffset, column + columnOffset)
                 )
         ).count();
     }
@@ -104,7 +104,7 @@ public class GameOfLifeService {
      * @return true/false depending on the cells alive/dead status
      */
     private boolean isAlive(final int row, final int column) {
-        return !cellOutOfBounds(row, column) && grid.getCell(column, row).isAlive();
+        return !isCellOutOfBounds(row, column) && grid.getCell(column, row).isAlive();
     }
 
     /**
@@ -114,7 +114,7 @@ public class GameOfLifeService {
      * @param column the column of the cell
      * @return true/false if the cell is out of bounds of the grid
      */
-    private boolean cellOutOfBounds(final int row, final int column) {
+    private boolean isCellOutOfBounds(final int row, final int column) {
         return (row < 0 || column < 0 || column >= grid.getColumns() || row >= grid.getRows());
     }
 

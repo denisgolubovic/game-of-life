@@ -1,4 +1,4 @@
-package dgol.priv.common;
+package dgol.common;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.enterprise.inject.Produces;

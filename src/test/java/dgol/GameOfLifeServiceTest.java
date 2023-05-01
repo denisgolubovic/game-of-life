@@ -1,8 +1,8 @@
-package dgol.priv;
+package dgol;
 
-import dgol.priv.model.Cell;
-import dgol.priv.model.Grid;
-import dgol.priv.service.GameOfLifeService;
+import dgol.model.Cell;
+import dgol.model.Grid;
+import dgol.service.GameOfLifeService;
 import io.quarkus.test.junit.QuarkusTest;
 import jakarta.inject.Inject;
 import org.junit.jupiter.api.Test;

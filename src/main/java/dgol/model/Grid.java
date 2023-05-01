@@ -1,4 +1,4 @@
-package dgol.priv.model;
+package dgol.model;
 
 public class Grid {
 
