@@ -1,0 +1,10 @@
+/* In src/app/cell/cell.component.css */
+.cell {
+  width: 20px;
+  height: 20px;
+  border: 1px solid #ccc;
+}
+
+.cell.alive {
+  background-color: #000;
+}

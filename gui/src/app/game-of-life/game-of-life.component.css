@@ -1,0 +1,43 @@
+.game-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+}
+
+.game-grid {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px; /* Add margin-bottom for spacing between the grid and the button */
+}
+
+.grid-row {
+  display: flex;
+}
+
+.grid-cell {
+  width: 20px;
+  height: 20px;
+  border: 1px solid #ccc;
+}
+
+.grid-cell.alive {
+  background-color: #000;
+}
+
+.tick-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  outline: none;
+  transition: background-color 0.3s;
+}
+
+.tick-button:hover {
+  background-color: #0056b3;
+}
